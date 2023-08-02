@@ -1,5 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { useUserAuth } from "../context/UserAuthContext";
+import { auth } from "../firebase";
 
 const FormContainer = styled.div`
     font-size: 13px;
@@ -39,7 +41,6 @@ const CheckboxConnector = styled.div`
     justify-content: space-around;
     gap: 0px 2vw;
 `;
-
 
 const CheckboxLabel = styled.label`
 `;
@@ -90,9 +91,22 @@ function LoginForm() {
     const [rememberMe, setRememberMe] = useState("");
     const [error, setError] = useState("");
 
+    const {signUp, googleSignIn} = useUserAuth();
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setError("");
+        try {
+            await signUp(email, password);
+            //navigate("/page"); //This is where the user goes after creating account
+        }catch (err) {
+            setError(err.message);
+        }
+    }
+
     return (
       <FormContainer>
-        <Form>
+        <Form onSubmit={handleSubmit}>
             <label htmlFor="email">Email<ColorizedSpan>*</ColorizedSpan></label>
             <Input
                 id="email"
