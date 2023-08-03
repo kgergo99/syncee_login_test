@@ -4,21 +4,14 @@ import { useUserAuth } from "../context/UserAuthContext";
 import { auth } from "../firebase";
 
 const FormContainer = styled.div`
-    font-size: 13px;
+    font-size: 1.5vh;
     font-weight: 600;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
 `;
 
 const Form = styled.form`
     display: flex;
     flex-direction: column;
     align-items: left;
-
-    width: 50%;
 `;
 
 const Input = styled.input`
@@ -26,23 +19,28 @@ const Input = styled.input`
     margin-bottom: 1.2vh;
     padding: 12px 20px;
     border: 1px solid #ccc;
-    border-radius: 20px; 
+    border-radius: 25px; 
+
+    min-height: 6vh;
 `;
 
 const CheckboxContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-
+    
 `;
 const CheckboxConnector = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-around;
-    gap: 0px 2vw;
+    gap: 0px 0.5vw;
 `;
 
 const CheckboxLabel = styled.label`
+`;
+const FontSizer = styled.span`
+    font-size: 1.5vh
 `;
 
 const Link = styled.a` 
@@ -58,8 +56,8 @@ const Checkbox = styled.input`
 `;
 
 const CustomCheckbox = styled.div`
-    width: 15px;
-    height: 15px;
+    width: 2vw;
+    height: 2vw;
     padding: 9px;
     border: 1px solid #ccc;
     border-radius: 6px;
@@ -74,6 +72,10 @@ const ColorizedSpan = styled.span`
   color: var(--accent-color);
 `;
 
+const CheckMark = styled.span`
+    color: white;
+`;
+
 const Button = styled.button`
     margin-top: 2vh;
     margin-bottom: 2vh;
@@ -83,6 +85,8 @@ const Button = styled.button`
     border: none;
     border-radius: 25px;
     cursor: pointer;
+
+    min-height: 6vh;
 `;
 
 function LoginForm() {
@@ -131,13 +135,13 @@ function LoginForm() {
                         onChange={(e) => setRememberMe(e.target.checked)}
                     />
                     <CustomCheckbox checked={rememberMe}>
-                        {rememberMe && <span style={{ color: "white" }}>&#10003;</span>}
+                        {rememberMe && <CheckMark>&#10003;</CheckMark>}
                     </CustomCheckbox>
                     <CheckboxLabel htmlFor="rememberMe">Remember me</CheckboxLabel>
                 </CheckboxConnector>
                 <Link href="">Forget password?</Link>
             </CheckboxContainer>
-            <Button type="submit">Login</Button>
+            <Button type="submit"><FontSizer>Login</FontSizer></Button>
             <div>
                 Not registered yet? <a href="">Create an account</a>
             </div>
