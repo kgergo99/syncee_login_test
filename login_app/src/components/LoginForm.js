@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { useUserAuth } from "../context/UserAuthContext";
-import { auth } from "../firebase";
+
 
 const FormContainer = styled.div`
     font-size: 18px;
@@ -97,7 +97,7 @@ function LoginForm() {
     const [rememberMe, setRememberMe] = useState("");
     const [error, setError] = useState("");
 
-    const {signUp, googleSignIn} = useUserAuth();
+    const {signUp} = useUserAuth();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
