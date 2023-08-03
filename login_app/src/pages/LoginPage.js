@@ -10,6 +10,7 @@ const PageContainer = styled.div`
     align-items: left;
     justify-content: center;
     overflow: auto;
+    position: relative;
 `;
 
 const Header = styled.span`
@@ -28,6 +29,14 @@ const SynceeLogo = styled.img`
     height: 30%; /* Scale the image down to fit the container height */
 `;
 
+const Footer = styled.span`
+    color: #999;
+    font-weight: 400;
+    position: absolute;
+    bottom: 0px;
+`;
+
+
 function LoginPage() {
     return (
         <PageContainer>
@@ -37,7 +46,7 @@ function LoginPage() {
             <GoogleButton/>
             <LoginSeparator/>
             <LoginForm/>
-            {/* <LoginImage></LoginImage> */}
+            <Footer>2022 Syncee. All rights reserved</Footer>
         </PageContainer>
     );
   }
