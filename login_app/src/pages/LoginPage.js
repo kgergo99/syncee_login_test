@@ -6,6 +6,8 @@ import SynceeLogoImage from "../assets/syncee-logo-300px.png";
 
 const PageContainer = styled.div`
     padding 5vw;
+    display: flex; /* Add flex to the PageContainer */
+    justify-content: center; /* Center the contents horizontally */
 `;
 
 const InputContainer = styled.div`
@@ -18,6 +20,19 @@ const InputContainer = styled.div`
     position: relative;
 
     padding: 8vw;
+    flex: 2;
+`;
+
+const ImageContainer = styled.div`
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    overflow: auto;
+    position: relative;
+    padding: 8vw;
+    flex: 3;
 `;
 
 const Header = styled.span`
