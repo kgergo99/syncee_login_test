@@ -1,13 +1,18 @@
 import LoginForm from "../components/LoginForm";
 import GoogleButton from "../components/GoogleButton";
 import LoginSeparator from "../components/LoginSeparator"; 
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import SynceeLogoImage from "../assets/syncee-logo-300px.png";
+import SynceeWallpaper from "../assets/syncee_frontend_test_wallpaper.png"
 
 const PageContainer = styled.div`
-    padding 5vw;
-    display: flex; /* Add flex to the PageContainer */
-    justify-content: center; /* Center the contents horizontally */
+    padding 0px;
+    display: flex;
+    justify-content: center;
+
+    @media (min-width: 600px) {
+        flex-wrap: wrap;
+    }
 `;
 
 const InputContainer = styled.div`
@@ -19,8 +24,12 @@ const InputContainer = styled.div`
     overflow: auto;
     position: relative;
 
-    padding: 8vw;
-    flex: 2;
+    padding: 4vw;
+    
+
+    @media (min-width: 600px) {
+        flex-basis: 50%;
+    }
 `;
 
 const ImageContainer = styled.div`
@@ -30,9 +39,20 @@ const ImageContainer = styled.div`
     align-items: left;
     justify-content: center;
     overflow: auto;
-    position: relative;
-    padding: 8vw;
-    flex: 3;
+    flex-basis: 50%;
+    
+    display: none;
+    background-image: url("${SynceeWallpaper}");
+    background-position: center;
+    background-size: cover; 
+
+    @media (min-width: 600px) {
+        display: flex;
+    }
+`;
+
+const Wallpaper = styled.img`
+
 `;
 
 const Header = styled.span`
@@ -47,8 +67,8 @@ const SubHeader = styled.span`
 
 const SynceeLogo = styled.img`
     margin-bottom: 35px;
-    width: 30%; /* Scale the image down to fit the container width */
-    height: 30%; /* Scale the image down to fit the container height */
+    width: 30%;
+    height: 30%;
 `;
 
 const Footer = styled.span`
@@ -71,6 +91,9 @@ function LoginPage() {
                 <LoginForm/>
                 <Footer>2022 Syncee. All rights reserved</Footer>
             </InputContainer>
+            <ImageContainer>
+                {/*<Wallpaper src={SynceeWallpaper}></Wallpaper>*/}
+            </ImageContainer>
         </PageContainer>
     );
   }
