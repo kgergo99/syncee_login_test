@@ -5,12 +5,19 @@ import styled from "styled-components";
 import SynceeLogoImage from "../assets/syncee-logo-300px.png";
 
 const PageContainer = styled.div`
+    padding 5vw;
+`;
+
+const InputContainer = styled.div`
+    background-color: white;
     display: flex;
     flex-direction: column;
     align-items: left;
     justify-content: center;
     overflow: auto;
     position: relative;
+
+    padding: 8vw;
 `;
 
 const Header = styled.span`
@@ -33,20 +40,22 @@ const Footer = styled.span`
     color: #999;
     font-weight: 400;
     position: absolute;
-    bottom: 0px;
+    bottom: 8vw;
 `;
 
 
 function LoginPage() {
     return (
         <PageContainer>
-            <SynceeLogo src={SynceeLogoImage} alt="Syncee Logo"/>
-            <Header>Login</Header>
-            <SubHeader>See your growth and get consulting support!</SubHeader>
-            <GoogleButton/>
-            <LoginSeparator/>
-            <LoginForm/>
-            <Footer>2022 Syncee. All rights reserved</Footer>
+            <InputContainer>
+                <SynceeLogo src={SynceeLogoImage} alt="Syncee Logo"/>
+                <Header>Login</Header>
+                <SubHeader>See your growth and get consulting support!</SubHeader>
+                <GoogleButton/>
+                <LoginSeparator/>
+                <LoginForm/>
+                <Footer>2022 Syncee. All rights reserved</Footer>
+            </InputContainer>
         </PageContainer>
     );
   }
