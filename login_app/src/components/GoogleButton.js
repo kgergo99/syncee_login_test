@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import Logo from "../assets/Google_G_Logo.png";
+import { useUserAuth } from "../context/UserAuthContext";
+import { useState } from "react";
 
 const Button = styled.button`
     
@@ -31,12 +33,26 @@ const ContentConnector = styled.div`
 `;
 
 function GoogleButton() {
-    return (
+    const [error, setError] = useState("");
 
+    const {googleSignIn} = useUserAuth();
+
+    const handleGoogleSignIn = async (e) => {
+        e.preventDefault();
+        setError("");
+        try {
+            await googleSignIn();
+            //navigate("/");
+        } catch (err) {
+            setError(err.message);
+        }
+    };
+
+    return (
             <Button type="submit">
                 <ContentConnector>
                 <GoogleLogo src={Logo} alt="Logo"/>
-                <GoogleButtonText>Sign in with Google</GoogleButtonText>
+                <GoogleButtonText onClick={ handleGoogleSignIn }>Sign in with Google</GoogleButtonText>
                 </ContentConnector>
             </Button>
 
