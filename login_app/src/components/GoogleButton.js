@@ -4,11 +4,10 @@ import { useUserAuth } from "../context/UserAuthContext";
 import { useState } from "react";
 
 const Button = styled.button`
-    
     padding: 0.7vh;
     background-color: white;
     color: #000;
-    border: none;
+    border: 1px #ccc solid;
     border-radius: 25px;
     cursor: pointer;
 
