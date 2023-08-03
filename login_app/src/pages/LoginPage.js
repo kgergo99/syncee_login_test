@@ -1,5 +1,6 @@
 import LoginForm from "../components/LoginForm";
 import GoogleButton from "../components/GoogleButton";
+import LoginSeparator from "../components/LoginSeparator"; 
 import styled from "styled-components";
 
 const PageContainer = styled.div`
@@ -7,7 +8,7 @@ const PageContainer = styled.div`
     flex-direction: column;
     align-items: left;
     justify-content: center;
-    
+    overflow: auto;
 `;
 
 function LoginPage() {
@@ -16,7 +17,7 @@ function LoginPage() {
             {/* <SynceeLogo/> */}
             {/* <LoginHeaderText/> */}
             <GoogleButton/>
-            {/* <LoginSeparator></LoginSeparator> */}
+            <LoginSeparator/>
             <LoginForm/>
             {/* <LoginImage></LoginImage> */}
         </PageContainer>

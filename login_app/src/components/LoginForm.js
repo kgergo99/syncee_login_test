@@ -4,7 +4,7 @@ import { useUserAuth } from "../context/UserAuthContext";
 import { auth } from "../firebase";
 
 const FormContainer = styled.div`
-    font-size: 1.5vh;
+    font-size: 18px;
     font-weight: 600;
 `;
 
@@ -15,13 +15,14 @@ const Form = styled.form`
 `;
 
 const Input = styled.input`
-    margin-top: 0.8vh;
-    margin-bottom: 1.2vh;
+    margin-top: 0.8vw;
+    margin-bottom: 1.2vw;
     padding: 12px 20px;
     border: 1px solid #ccc;
     border-radius: 25px; 
 
-    min-height: 6vh;
+    height: 10vw;
+    max-height: 50px;
 `;
 
 const CheckboxContainer = styled.div`
@@ -40,7 +41,7 @@ const CheckboxConnector = styled.div`
 const CheckboxLabel = styled.label`
 `;
 const FontSizer = styled.span`
-    font-size: 1.5vh
+    font-size: 18px
 `;
 
 const Link = styled.a` 
@@ -86,7 +87,8 @@ const Button = styled.button`
     border-radius: 25px;
     cursor: pointer;
 
-    min-height: 6vh;
+    height: 10vw;
+    max-height: 50px;
 `;
 
 function LoginForm() {

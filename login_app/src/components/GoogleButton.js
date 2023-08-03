@@ -2,8 +2,7 @@ import styled from "styled-components";
 import Logo from "../assets/Google_G_Logo.png";
 
 const Button = styled.button`
-    margin-top: 1vh;
-    margin-bottom: 1vh;
+    
     padding: 0.7vh;
     background-color: white;
     color: #000;
