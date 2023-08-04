@@ -6,6 +6,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import HomePage from "./pages/HomePage.js";
 import ProtectedRoute from "./components/ProtectedRoute.js";
+import ListingPage from "./pages/ListingPage.js";
+import CurrencyList from "./components/CurrencyListing.js";
 
 function App() {
   return (
@@ -22,7 +24,11 @@ function App() {
               <HomePage />
             </ProtectedRoute>
           } />
-          
+          <Route path="/listing" element={
+            <ProtectedRoute>
+              <CurrencyList />
+            </ProtectedRoute>
+          } />
             
         </Routes>
       </UserAuthContextProvider> 
