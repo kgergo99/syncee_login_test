@@ -2,6 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { useUserAuth } from "../context/UserAuthContext";
 import { Navigate, useNavigate } from "react-router-dom";
+import { isEmailValid, isPasswordValid } from "../scripts/validation";
 
 const FormContainer = styled.div`
     font-size: 18px;
@@ -105,22 +106,28 @@ const Footer = styled.span`
     margin-top:20px;
 `;
 
-function LoginForm() {
+function SignupForm() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [rememberMe, setRememberMe] = useState("");
     const [error, setError] = useState("");
 
-    const {logIn} = useUserAuth();
+    const {signUp} = useUserAuth();
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError("");
         try {
-            await logIn(email, password);
-            navigate("/"); //This is where the user goes after creating account
-            console.log("Login Success");
+            if(isPasswordValid(password)) {
+                await signUp(email, password);
+                navigate("/");
+            }
+            else {
+                setError("Invalid Password!")
+                console.log("Invalid Password!")
+            }
+            
         }catch (err) {
             setError(err.message);
         }
@@ -145,23 +152,9 @@ function LoginForm() {
                 placeholder="Min. 8 character"
                 onChange={ (e) => setPassword(e.target.value) }
             />
-            <CheckboxContainer>
-                <CheckboxConnector>
-                    <Checkbox
-                        type="checkbox"
-                        id="rememberMe"
-                        onChange={(e) => setRememberMe(e.target.checked)}
-                    />
-                    <CustomCheckbox checked={rememberMe}>
-                        {rememberMe && <CheckMark>&#10003;</CheckMark>}
-                    </CustomCheckbox>
-                    <CheckboxLabel htmlFor="rememberMe">Remember me</CheckboxLabel>
-                </CheckboxConnector>
-                <Link href="/forgetpwd">Forget password?</Link>
-            </CheckboxContainer>
-            <Button type="submit"><FontSizer>Login</FontSizer></Button>
+            <Button type="submit"><FontSizer>Signup</FontSizer></Button>
             <div>
-                Not registered yet? <Link href="/signup">Create an account</Link>
+                Already registered? <Link href="/">Log in!</Link>
             </div>
         </Form>
         <Footer>2022 Syncee. All rights reserved</Footer>
@@ -169,4 +162,4 @@ function LoginForm() {
     );
   }
   
-  export default LoginForm;
+  export default SignupForm;
