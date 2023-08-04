@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Logo from "../assets/Google_G_Logo.png";
 import { useUserAuth } from "../context/UserAuthContext";
 import { useState } from "react";
+import { Navigate } from "react-router-dom";
 
 const Button = styled.button`
     padding: 0.7vh;
@@ -44,7 +45,7 @@ function GoogleButton() {
         setError("");
         try {
             await googleSignIn();
-            //navigate("/");
+            Navigate("/home");
         } catch (err) {
             setError(err.message);
         }

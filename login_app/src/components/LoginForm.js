@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { useUserAuth } from "../context/UserAuthContext";
+import { Navigate, useNavigate } from "react-router-dom";
 
 
 const FormContainer = styled.div`
@@ -118,7 +119,7 @@ function LoginForm() {
         setError("");
         try {
             await signUp(email, password);
-            //navigate("/page"); //This is where the user goes after creating account
+            Navigate("/home"); //This is where the user goes after creating account
         }catch (err) {
             setError(err.message);
         }

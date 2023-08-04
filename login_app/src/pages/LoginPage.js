@@ -85,7 +85,6 @@ function LoginPage() {
                 <GoogleButton/>
                 <LoginSeparator/>
                 <LoginForm/>
-                
             </InputContainer>
             <ImageContainer/>
         </PageContainer>
