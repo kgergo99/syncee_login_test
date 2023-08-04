@@ -2,6 +2,8 @@ import { useState } from "react";
 import styled from "styled-components";
 import { useUserAuth } from "../context/UserAuthContext";
 import { Navigate, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import errorSetter from "../scripts/errorsetter";
 
 const FormContainer = styled.div`
     font-size: 18px;
@@ -119,10 +121,13 @@ function LoginForm() {
         setError("");
         try {
             await logIn(email, password);
-            navigate("/"); //This is where the user goes after creating account
+            navigate("/home"); //This is where the user goes after creating account
             console.log("Login Success");
         }catch (err) {
             setError(err.message);
+            console.log(err.message);
+            toast.error(errorSetter(err));
+            
         }
     }
 

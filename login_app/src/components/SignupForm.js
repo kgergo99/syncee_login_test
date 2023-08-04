@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useUserAuth } from "../context/UserAuthContext";
 import { Navigate, useNavigate } from "react-router-dom";
 import { isEmailValid, isPasswordValid } from "../scripts/validation";
+import { toast } from "react-toastify";
 
 const FormContainer = styled.div`
     font-size: 18px;
@@ -124,8 +125,10 @@ function SignupForm() {
                 navigate("/");
             }
             else {
-                setError("Invalid Password!")
-                console.log("Invalid Password!")
+                setError("Invalid Password!");
+                console.log("Invalid Password!");
+                toast.error("Invalid password! Password must have at least one lowercase and one uppercase letter, one digit, and one special character.");
+                
             }
             
         }catch (err) {
