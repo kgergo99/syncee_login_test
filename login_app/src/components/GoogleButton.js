@@ -12,7 +12,10 @@ const Button = styled.button`
     cursor: pointer;
 
     font-weight: bold;
+
+    height: 10vw;
     min-height: 6vh;
+    max-height: 50px;
 `;
 
 const GoogleLogo = styled.img`

@@ -8,7 +8,8 @@ import SynceeWallpaper from "../assets/syncee_frontend_test_wallpaper.png"
 const PageContainer = styled.div`
     padding 0px;
     display: flex;
-    justify-content: center;
+    height: 100vh;
+
 
     @media (min-width: 600px) {
         flex-wrap: wrap;
@@ -20,12 +21,13 @@ const InputContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: left;
-    justify-content: center;
-    overflow: auto;
-    position: relative;
-
-    padding: 4vw;
     
+
+    
+
+    padding: 8vh 5vw;
+    padding-bottom: 0;
+    height: 100vh;
 
     @media (min-width: 600px) {
         flex-basis: 50%;
@@ -38,7 +40,7 @@ const ImageContainer = styled.div`
     flex-direction: column;
     align-items: left;
     justify-content: center;
-    overflow: auto;
+
     flex-basis: 50%;
     
     display: none;
@@ -68,16 +70,10 @@ const SubHeader = styled.span`
 const SynceeLogo = styled.img`
     margin-bottom: 35px;
     width: 30%;
-    height: 30%;
+    height: 10%;
+    object-fit: contain;
+    
 `;
-
-const Footer = styled.span`
-    color: #999;
-    font-weight: 400;
-    position: absolute;
-    bottom: 8vw;
-`;
-
 
 function LoginPage() {
     return (
@@ -89,11 +85,9 @@ function LoginPage() {
                 <GoogleButton/>
                 <LoginSeparator/>
                 <LoginForm/>
-                <Footer>2022 Syncee. All rights reserved</Footer>
+                
             </InputContainer>
-            <ImageContainer>
-                {/*<Wallpaper src={SynceeWallpaper}></Wallpaper>*/}
-            </ImageContainer>
+            <ImageContainer/>
         </PageContainer>
     );
   }

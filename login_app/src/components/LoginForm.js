@@ -6,7 +6,13 @@ import { useUserAuth } from "../context/UserAuthContext";
 const FormContainer = styled.div`
     font-size: 18px;
     font-weight: 600;
-    margin-bottom: 150px;
+    margin-bottom: 0px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+    flex-grow: 1;
 `;
 
 const Form = styled.form`
@@ -79,7 +85,7 @@ const CheckMark = styled.span`
 `;
 
 const Button = styled.button`
-    margin-top: 2vh;
+    margin-top: 1vh;
     margin-bottom: 2vh;
     padding: 1.6vh;
     background-color: var(--accent-color);
@@ -90,6 +96,13 @@ const Button = styled.button`
 
     height: 10vw;
     max-height: 50px;
+`;
+
+const Footer = styled.span`
+    color: #999;
+    font-weight: 400;
+    margin-bottom: 20px;
+    margin-top:20px;
 `;
 
 function LoginForm() {
@@ -149,6 +162,7 @@ function LoginForm() {
                 Not registered yet? <a href="">Create an account</a>
             </div>
         </Form>
+        <Footer>2022 Syncee. All rights reserved</Footer>
       </FormContainer>
     );
   }
