@@ -122,7 +122,8 @@ function SignupForm() {
         try {
             if(isPasswordValid(password)) {
                 await signUp(email, password);
-                navigate("/");
+                toast.done("Signup Successfull!")
+                navigate("/home");
             }
             else {
                 setError("Invalid Password!");
