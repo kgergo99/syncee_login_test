@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { useUserAuth } from "../context/UserAuthContext";
 import { Navigate, useNavigate } from "react-router-dom";
 
-
 const FormContainer = styled.div`
     font-size: 18px;
     font-weight: 600;
@@ -113,6 +112,7 @@ function LoginForm() {
     const [error, setError] = useState("");
 
     const {signUp} = useUserAuth();
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -156,11 +156,11 @@ function LoginForm() {
                     </CustomCheckbox>
                     <CheckboxLabel htmlFor="rememberMe">Remember me</CheckboxLabel>
                 </CheckboxConnector>
-                <Link href="">Forget password?</Link>
+                <Link href="/forgetpwd">Forget password?</Link>
             </CheckboxContainer>
             <Button type="submit"><FontSizer>Login</FontSizer></Button>
             <div>
-                Not registered yet? <a href="">Create an account</a>
+                Not registered yet? <Link href="/signup">Create an account</Link>
             </div>
         </Form>
         <Footer>2022 Syncee. All rights reserved</Footer>

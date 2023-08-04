@@ -1,11 +1,17 @@
 import { UserAuthContextProvider } from "./context/UserAuthContext.jsx";
 import LoginPage from "./pages/LoginPage";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
       <UserAuthContextProvider>
-        <LoginPage /> 
+        <Routes>
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/signup" element={<LoginPage />} />
+          <Route path="/forgetpwd" element={<LoginPage />} />
+
+        </Routes>
       </UserAuthContextProvider> 
     </div>
   );
