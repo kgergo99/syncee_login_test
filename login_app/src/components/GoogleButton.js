@@ -2,7 +2,8 @@ import styled from "styled-components";
 import Logo from "../assets/Google_G_Logo.png";
 import { useUserAuth } from "../context/UserAuthContext";
 import { useState } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Button = styled.button`
     padding: 0.7vh;
@@ -37,7 +38,7 @@ const ContentConnector = styled.div`
 
 function GoogleButton() {
     const [error, setError] = useState("");
-
+    const navigate = useNavigate();
     const {googleSignIn} = useUserAuth();
 
     const handleGoogleSignIn = async (e) => {
@@ -45,9 +46,10 @@ function GoogleButton() {
         setError("");
         try {
             await googleSignIn();
-            Navigate("/home");
+            navigate("/home");
         } catch (err) {
             setError(err.message);
+            toast.error(err.message);
         }
     };
 

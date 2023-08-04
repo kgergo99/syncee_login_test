@@ -5,6 +5,7 @@ import SignupPage from "./pages/SignupPage.js";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import HomePage from "./pages/HomePage.js";
+import ProtectedRoute from "./components/ProtectedRoute.js";
 
 function App() {
   return (
@@ -15,7 +16,14 @@ function App() {
           <Route path="/" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/forgetpwd" element={<LoginPage />} />
-          <Route path="/home" element={<HomePage />} />
+          
+          <Route path="/home" element={
+            <ProtectedRoute>
+              <HomePage />
+            </ProtectedRoute>
+          } />
+          
+            
         </Routes>
       </UserAuthContextProvider> 
     </div>
