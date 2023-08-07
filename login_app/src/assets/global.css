@@ -1,5 +1,7 @@
 * {
   --accent-color: rgb(81, 55, 240);
+  --base-blue: rgb(40, 109, 248);
+  --light-blue: rgb(226, 239, 251);
 }
 
 *, *::after, *::before {
