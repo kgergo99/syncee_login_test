@@ -46,14 +46,23 @@ const AlignHelper = styled.div `
     gap: 4vw;
 `;
 
-function TopBar({email}) {
+function TopBar({email, logout}) {
+
+
+    const handleLogout = async () => {
+        try {
+            await logout();
+        }catch (err) {
+            console.warn(err.message);
+        }
+    }
 
     return(
         <Bar>
             <S_Logo src={SynceeImage}></S_Logo>
             <AlignHelper>
                 <UserText>Welcome {email}!</UserText>
-                <Button><ButtonText>Logout</ButtonText></Button>
+                <Button onClick={handleLogout}><ButtonText>Logout</ButtonText></Button>
             </AlignHelper>
         </Bar>
     )
