@@ -1,6 +1,7 @@
 import { useUserAuth } from "../context/UserAuthContext";
 import styled from "styled-components";
 import { Navigate, useNavigate } from "react-router-dom";
+import TopBar from "../components/TopBar";
 
 const Button = styled.button`
     margin-top: 1vh;
@@ -41,7 +42,7 @@ function HomePage() {
 
     return (
         <div>
-            <h1>Welcome!</h1>
+            <TopBar email={user.email}/>
             {user && <h2>Your email address: {user.email}</h2>}
             {user && <h2>Your password can't be shown due to Firebase's security</h2>}
             {!user && <h2>You are not logged in!</h2>}
