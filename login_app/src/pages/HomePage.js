@@ -1,38 +1,37 @@
 import { useUserAuth } from "../context/UserAuthContext";
 import styled from "styled-components";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import TopBar from "../components/TopBar";
 
-const Button = styled.button`
-    margin-top: 1vh;
-    margin-bottom: 2vh;
-    padding: 1.6vh;
-    background-color: var(--accent-color);
+const Button = styled.div `
+    background-color: var(--base-blue);
+    border-radius: 12px;
+    padding: 2vh;
     color: #fff;
     border: none;
-    border-radius: 25px;
+    border-radius: 12px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
 
-    height: 10vw;
-    max-height:40px;
+    height: 20%;
+    max-height: 50px;
+
+    box-shadow: 0px 4px 8px 1px rgba(0,0,0, 0.30);
+
 `;
 
 const ButtonContainer = styled.div`
     display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 10px;
+    width: 100vw;
+    height: 80vh;
 `;
 
 function HomePage() {
     const {user, logOut} = useUserAuth();
     const navigate = useNavigate()
-
-    const handleLogout = async () => {
-        try {
-            await logOut();
-        }catch (err) {
-            console.warn(err.message);
-        }
-    }
 
     const handleClick = () => {
         navigate("/listing");
@@ -41,15 +40,10 @@ function HomePage() {
 
     return (
         <div>
-            <h1>Welcome!</h1>
-            {user && <h2>Your email address: {user.email}</h2>}
-            {user && <h2>Your password can't be shown due to Firebase's security</h2>}
-            {!user && <h2>You are not logged in!</h2>}
+            <TopBar email={user.email} logout={logOut}/>
             <ButtonContainer>
-                <Button onClick={handleLogout}>Logout</Button>
                 <Button onClick={handleClick}>To the API response</Button>
             </ButtonContainer>
-            
         </div>
     );
   }
